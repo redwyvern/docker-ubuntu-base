@@ -9,6 +9,7 @@ USER root
 # Add some necessary utility packages to bootstrap the install process
 RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
     curl \
+    wget \
     locales \
     tzdata \
     apt-transport-https \
