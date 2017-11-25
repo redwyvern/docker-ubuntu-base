@@ -42,4 +42,4 @@ RUN ln -fs /usr/share/zoneinfo/${IMAGE_TZ} /etc/localtime && dpkg-reconfigure -f
 
 # Add the local artifactory instance to the apt sources lists
 RUN echo deb http://artifactory.weedon.org.au/artifactory/debian-local xenial main >/etc/apt/sources.list.d/artifactory.list && \
-    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | sudo apt-key add -
+    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | apt-key add -
