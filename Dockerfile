@@ -10,7 +10,10 @@ USER root
 RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
     curl \
     locales \
-    tzdata && \
+    tzdata \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common && \
     apt-get -q autoremove && \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
