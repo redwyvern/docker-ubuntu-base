@@ -40,3 +40,6 @@ ENV LC_ALL en_US.UTF-8
 # Change this to the normal method once this is fixed.
 RUN ln -fs /usr/share/zoneinfo/${IMAGE_TZ} /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
 
+# Add the local artifactory instance to the apt sources lists
+RUN echo deb http://artifactory.weedon.org.au/artifactory/debian-local xenial main >/etc/apt/sources.list.d/artifactory.list && \
+    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | sudo apt-key add -
