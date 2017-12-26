@@ -8,11 +8,8 @@ ARG IMAGE_TZ=America/New_York
 
 USER root
 
+# Configure the sources.list to point to the local cache
 COPY sources.list /etc/apt
-
-# Add the local artifactory instance to the apt sources lists
-RUN echo deb http://artifactory.weedon.org.au/artifactory/debian-local xenial main >/etc/apt/sources.list.d/artifactory.list && \
-    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | apt-key add -
 
 # Add some necessary utility packages to bootstrap the install process
 RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
@@ -25,6 +22,10 @@ RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommend
     software-properties-common && \
     apt-get -q autoremove && \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
+
+# Add the local artifactory instance to the apt sources lists
+RUN echo deb http://artifactory.weedon.org.au/artifactory/debian-local xenial main >/etc/apt/sources.list.d/artifactory.list && \
+    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | apt-key add -
 
 # Add locales after locale-gen as needed
 # Upgrade packages on image
