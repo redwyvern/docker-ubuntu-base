@@ -50,3 +50,7 @@ deb http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security m
 # deb-src http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security multiverse
 deb [arch=amd64] http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial stable
 # deb-src [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+
+# Local debian repository
+deb http://artifactory.weedon.org.au/artifactory/debian-local xenial main
+
