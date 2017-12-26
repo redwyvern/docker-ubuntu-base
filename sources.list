@@ -41,17 +41,12 @@ deb http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-backports 
 # deb http://archive.canonical.com/ubuntu xenial partner
 # deb-src http://archive.canonical.com/ubuntu xenial partner
 
-#deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted
 deb http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security main restricted
 
-# deb-src http://security.ubuntu.com/ubuntu/ xenial-security main restricted
-#deb http://security.ubuntu.com/ubuntu/ xenial-security universe
+# deb-src http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security main restricted
 deb http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security universe
-#deb-src http://security.ubuntu.com/ubuntu/ xenial-security universe
 deb-src http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security universe
-#deb http://security.ubuntu.com/ubuntu/ xenial-security multiverse
 deb http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security multiverse
-# deb-src http://security.ubuntu.com/ubuntu/ xenial-security multiverse
-#deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+# deb-src http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial-security multiverse
 deb [arch=amd64] http://artifactory.weedon.org.au/artifactory/ubuntu-remote xenial stable
 # deb-src [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
