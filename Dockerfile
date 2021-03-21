@@ -8,8 +8,19 @@ ARG IMAGE_TZ=America/New_York
 
 USER root
 
+RUN mkdir -p /etc/gcrypt && echo all >>/etc/gcrypt/hwf.deny
+
+RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    wget \
+    gnupg && \
+    apt-get -q autoremove && \
+    apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
+
 # Configure the sources.list to point to the local cache
 COPY sources.list /etc/apt
+
+RUN wget -qO - https://artifactory.weedon.org.au/artifactory/api/gpg/key/public | apt-key add -
 
 # Change the sources.list file to the correct distribution
 RUN sed -i 's/{{dist}}/focal/g' /etc/apt/sources.list
@@ -35,7 +46,6 @@ RUN apt-get clean && apt-get update && apt-get install -y --no-install-recommend
 
 # Add the local artifactory instance to the apt sources lists
 #RUN echo deb http://artifactory.weedon.org.au/artifactory/debian-local $(lsb_release -cs) main >/etc/apt/sources.list.d/artifactory.list && \
-#    wget -qO - http://artifactory.weedon.org.au/artifactory/api/gpg/key/public | apt-key add -
 
 # Add locales after locale-gen as needed
 # Upgrade packages on image
